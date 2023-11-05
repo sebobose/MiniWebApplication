@@ -8,15 +8,23 @@ import { Task } from 'src/app/Task';
 })
 export class AddTaskComponent {
   showAddTask: boolean = true;
-  text: string;
+  text!: string;
   day!: string;
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter()
+  showError!: boolean;
   constructor() {
-    this.text = "nesto"
+    this.showError = false;
   }
 
   OnSubmit() {
-    this.onAddTask.emit()
-    console.log("idk");
+    if(!this.text) {
+      this.showError = true;
+      return;
+    }
+    const newTask : Task = {
+      text: this.text,
+      taskday: this.day,
+    };
+    this.onAddTask.emit(newTask)
   }
 }

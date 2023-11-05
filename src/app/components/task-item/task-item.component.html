@@ -1,9 +1,14 @@
 <div class="task">
-    <h3>{{task.text}} 
-        <fa-icon 
+    <h3>{{task.text}}
+        <fa-icon
+        (click)="onUpdate(task)"
+        [ngStyle]="{'color': 'green'}"
+        [icon]="faCheck"
+        ></fa-icon>
+        <fa-icon
         (click)="onDelete(task)"
-        [ngStyle]="{'color': 'red'}" 
+        [ngStyle]="{'color': 'red'}"
         [icon]="faTimes"
         ></fa-icon></h3>
-    <p>{{task.day}}</p>
+    <p>{{task.taskday}}</p>
 </div>
